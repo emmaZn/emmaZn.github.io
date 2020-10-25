@@ -2,9 +2,8 @@
   <v-app>
     <div id="fullpage">
       <div class="section" id="section1">
-        <div id="canvas">
-        <img class="cloud2" src="./assets/cloud2.png" alt="little cloud moving" />
-        </div><v-row justify="center" class="pt-16">
+        <v-cloud></v-cloud>
+        <v-row justify="center" class="pt-16">
           <v-col cols="11" lg="9" align="left" class="mt-16 pt-16">
             <h1 class="mb-2">
               Emmanuelle <br />
@@ -12,6 +11,11 @@
             </h1>
             <hr />
             <h3 class="mt-5">Etudiante en développement web</h3>
+          </v-col>
+        </v-row>
+        <v-row justify="center" class="pt-16">
+          <v-col cols="11" lg="9" align="right" class="mt-8 pt-16">
+            <h1>Mon CV digital</h1>
           </v-col>
         </v-row>
       </div>
@@ -24,9 +28,12 @@
 </template>
 
 <script>
+import VCloud from "@/components/VCloud";
 export default {
   name: "App",
-
+  components: {
+    VCloud,
+  },
   data: () => ({
     //
   }),
@@ -43,6 +50,7 @@ h1 {
   text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.5);
   color: white;
   letter-spacing: 0.5rem;
+  z-index: 5;
 }
 hr {
   width: 50%;
