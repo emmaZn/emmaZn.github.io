@@ -27,9 +27,12 @@ export default {
     move() {
       let elem = document.querySelectorAll(".cloud");
       console.log("clouds", elem);
+      let rand;
+      let rand2;
       elem.forEach((cloud) => {
-        let rand = Math.floor(Math.random() * (30 - 20 + 1) + 20);
-        let rand2 = Math.floor(Math.random() * (600 - 200 + 1) + 200);
+        console.log(cloud)
+        rand = Math.floor(Math.random() * (30 - 20 + 1) + 20);
+        rand2 = Math.floor(Math.random() * (600 - 200 + 1) + 200);
         let speed = rand;
         let pos = rand2;
         setInterval(frame, speed);
