@@ -10,6 +10,9 @@
   "dependencies": {
     "core-js": "^3.6.5",
     "fullpage.js": "^3.0.9",
+    "gsap": "^3.5.1",
+    "jsquery": "^1.1.1",
+    "splitting": "^1.0.6",
     "vue": "^2.6.11",
     "vuetify": "^2.2.11"
   },

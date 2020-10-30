@@ -1,5 +1,5 @@
 <template>
-  <div id="container">
+  <span>
     <img
       class="cloud"
       id="cloud2"
@@ -12,7 +12,25 @@
       src=".././assets/cloud1.png"
       alt="little cloud moving"
     />
-  </div>
+    <img
+      class="cloud"
+      id="cloud3"
+      src=".././assets/cloud3.png"
+      alt="little cloud moving"
+    />
+    <img
+      class="cloud"
+      id="cloud4"
+      src=".././assets/cloud4.png"
+      alt="little cloud moving"
+    />
+    <img
+      class="cloud"
+      id="cloud5"
+      src=".././assets/cloud5.png"
+      alt="little cloud moving"
+    />
+  </span>
 </template>
 
 <script>
@@ -27,20 +45,20 @@ export default {
     move() {
       let elem = document.querySelectorAll(".cloud");
       console.log("clouds", elem);
+      let speed;
 
       elem.forEach((cloud) => {
-        let rand = Math.floor(Math.random() * (40 - 20 + 1) + 20);
-        let speed = rand;
-        let pos = cloud.style.right;
-        setInterval(frame, speed);
-        function frame() {
-          if (pos == 2000) {
-            pos = -300;
-          } else {
-            pos++;
-            cloud.style.right = pos + "px";
-          }
-        }
+        speed = Math.floor(Math.random() * (200000 - 21000) + 21000);
+        // let rand = Math.floor(Math.random() * (40 - 20 + 1) + 20);
+        // let speed = rand;
+        // let pos = cloud.style.right;
+
+        cloud.animate([{ transform: "translate(-1500px)" }], {
+          duration: speed,
+          iterations: Infinity,
+          easing: "ease",
+          direction: "alternate"
+        });
       });
     },
   },
@@ -48,19 +66,33 @@ export default {
 </script>
 
 <style>
-#container {
+.cloud {
   position: relative;
 }
-#cloud2 {
-  position: absolute;
-  width: 300px;
-  top: 100px;
-  right:20%;
-}
 #cloud1 {
-  position: absolute;
   width: 200px;
-  top: 200px;
-    right:30%;
+  top: 5%;
+  right: -20%;
+}
+#cloud2 {
+  width: 300px;
+  top: 10%;
+  right: -60%;
+}
+
+#cloud3 {
+  top: 20%;
+  width: 10%;
+  right: -23%;
+}
+#cloud4 {
+  width: 250px;
+  top: 65%;
+  right: 20%;
+}
+#cloud5 {
+  width: 250px;
+  right: 50%;
+  top:70%;
 }
 </style>
