@@ -2,6 +2,8 @@ import Vue from 'vue'
 import App from './App.vue'
 import vuetify from './plugins/vuetify';
 import fullpage from 'fullpage.js'
+import 'fullpage.js/dist/fullpage.css'
+
 Vue.config.productionTip = false
 
 new Vue({
@@ -14,7 +16,16 @@ new fullpage('#fullpage', {
   licenseKey: 'YOUR KEY HERE',
   autoScrolling:true,
 	scrollHorizontally: true,
-  sectionsColor: ['yellow', 'orange', '#C0C0C0', '#ADD8E6'],
+	lockAnchors: false,
+	anchors: ['firstPage', 'secondPage', 'thirdPage', 'fourthPage','fifthPage'],
+	menu: '#myMenu',
+	navigation: true,
+	navigationPosition: 'right',
+	navigationTooltips: ['Accueil', 'A propos', 'Parcours', 'Compétences', 'Contact'],
+	showActiveTooltip: true,
+	slidesNavigation: true,
+	slidesNavPosition: 'bottom',
+	css3:true
 });
 
 

@@ -48,7 +48,7 @@ export default {
       let speed;
 
       elem.forEach((cloud) => {
-        speed = Math.floor(Math.random() * (200000 - 21000) + 21000);
+        speed = Math.floor(Math.random() * (180000 - 200900) + 200900);
         // let rand = Math.floor(Math.random() * (40 - 20 + 1) + 20);
         // let speed = rand;
         // let pos = cloud.style.right;
