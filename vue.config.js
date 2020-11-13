@@ -5,6 +5,6 @@ module.exports = {
 }
 module.exports={
   publicPath: process.env.NODE_ENV === 'production'
-    ? '/emmaznemmaZn.github.io/'
+    ? '/emmaZn.github.io/'
     :'/'
 }
