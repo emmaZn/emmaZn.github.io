@@ -14,10 +14,9 @@
           </v-col>
         </v-row>
         <v-row justify="center" class="pt-16">
-          <v-col cols="11" lg="9" align="right" class="mt-8 pt-16">
+          <v-col cols="11" lg="9" align="right" class="mt-8 pt-8">
             <h1>Mon CV digital</h1>
           </v-col>
-          <v-col cols="10" lg="9" align="right" class="mt-8 pt-16"> </v-col>
         </v-row>
       </div>
       <div class="section" id="section2" data-anchor="secondPage">
@@ -32,7 +31,7 @@
             <v-col cols="11" lg="9" align="left" class="mt-16 pt-10">
               <h1>A propos de moi</h1>
             </v-col>
-            <v-col cols="10" lg="6" align="left" class="mt-16 ml-16 pt-10">
+            <v-col cols="10" lg="6" align="left" class="mt-8 ml-16 pt-10">
               <div class="element">
                 <v-row @mouseover="changeColor(1)" @mouseleave="removeColor(1)">
                   <v-col cols="2">
@@ -42,6 +41,7 @@
                       viewBox="0 0 86 90"
                       fill="none"
                       xmlns="http://www.w3.org/2000/svg"
+                      class="ml-8"
                     >
                       <g filter="url(#filter0_d)">
                         <path
@@ -112,6 +112,7 @@
                       viewBox="0 0 86 89"
                       fill="none"
                       xmlns="http://www.w3.org/2000/svg"
+                      class="ml-8"
                     >
                       <g filter="url(#filter0_d)">
                         <path
@@ -181,6 +182,7 @@
                       viewBox="0 0 86 92"
                       fill="none"
                       xmlns="http://www.w3.org/2000/svg"
+                      class="ml-8"
                     >
                       <g filter="url(#filter0_d)">
                         <path
@@ -256,33 +258,33 @@
           transition="fade-transition"
         >
           <v-row class="pt-16 pl-16 ml-16" height="100%">
-            <v-col cols="11" lg="9" align="left" class="mt-16 pt-10">
+            <v-col cols="11" lg="9" align="left" class="mt-2 pt-10">
               <h1>Ma vie, mon oeuvre</h1>
             </v-col>
-            <v-col cols="11" lg="6">
+            <v-col cols="11" lg="7">
               <v-timeline>
                 <v-timeline-item
                   v-for="(year, i) in years"
                   :key="i"
-                  :color="year.color"
+                  color="white"
                   small
                 >
                   <template v-slot:opposite>
                     <span
-                      :class="`headline font-weight-bold ${year.color}--text`"
+                      :class="`headline font-weight-bold white--text`"
                       v-text="year.year"
                     ></span>
                   </template>
-                  <div class="py-0">
-                    <h2
-                      :class="`headline font-weight-light mb-0 ${year.color}--text`"
+                  <v-card dark color="black">
+                    <v-card-title
+                      :class="`headline font-weight-light mb-0 white--text`"
                     >
-                      Lorem ipsum
-                    </h2>
-                    <div>
-                      {{year.text}}
-                    </div>
-                  </div>
+                      {{ year.title }}
+                    </v-card-title>
+                    <v-card-text>
+                      {{ year.text }}
+                    </v-card-text>
+                  </v-card>
                 </v-timeline-item>
               </v-timeline>
             </v-col>
@@ -291,13 +293,44 @@
       </div>
 
       <div class="section" id="section4" data-anchor="fourthPage">
-        <v-lazy
+<v-lazy
           :options="{
             threshold: 0.5,
           }"
           height="100%"
           transition="fade-transition"
         >
+          <v-row class="pt-16 pl-16 ml-16">
+            <v-col cols="11" lg="9" align="left" class="mt-16 pt-10">
+              <h1>Mes compétences</h1>
+            </v-col>
+            <v-col
+              v-for="(app, i) in apps"
+              :key="i"
+              class="d-flex child-flex"
+              cols="4"
+            >
+            
+              <v-img
+                :src="'./assets/' + app.image"
+                :lazy-src="'./assets/' + app.image"
+                aspect-ratio="1"
+                class="grey lighten-2"
+              >
+                <template v-slot:placeholder>
+                  <v-row
+                    class="fill-height ma-0"
+                    align="center"
+                    justify="center"
+                  >
+                    <v-progress-circular
+                      color="grey lighten-5"
+                    ></v-progress-circular>
+                  </v-row>
+                </template>
+              </v-img>
+            </v-col>
+          </v-row>
         </v-lazy>
       </div>
 
@@ -330,6 +363,17 @@ export default {
     isOnScreen: false,
     years: [
       {
+        color: "orange",
+        year: "2021",
+        title: "Licence Professionelle Développement Web ",
+        text: "Apprentissage au sein de la société SISTEMIC. ",
+      },
+      {
+        color: "amber",
+        year: "2020",
+        title: "DUT Informatique en année spéciale",
+      },
+      {
         color: "cyan",
         year: "1960",
       },
@@ -341,15 +385,11 @@ export default {
         color: "pink",
         year: "1980",
       },
+    ],
+    apps: [
       {
-        color: "amber",
-        year: "2020",
-        text : "DUT Informatique en année spéciale"
-      },
-      {
-        color: "orange",
-        year: "2021",
-        text: "Licence Professionelle Développement Web <br/> Apprentissage au sein de la société SISTEMIC"
+        name: "VueJS",
+        image: "logo.png",
       },
     ],
   }),
@@ -363,42 +403,42 @@ export default {
 
   methods: {
     changeColor(i) {
-      let id;
-      let idText;
-      if (i == 1) {
-        id = "planet";
-        idText = "planetText";
-      } else if (i == 2) {
-        id = "case";
-        idText = "caseText";
-      } else if (i == 3) {
-        id = "flower";
-        idText = "flowerText";
-      }
-      let icon = document.getElementById(id);
-      let text = document.getElementById(idText);
-      icon.setAttribute("fill", "orange");
-      console.log("text", text);
-      text.setAttribute("style", "color:orange;  text-shadow: 0 0 0");
+      // let id;
+      // let idText;
+      // if (i == 1) {
+      //   id = "planet";
+      //   idText = "planetText";
+      // } else if (i == 2) {
+      //   id = "case";
+      //   idText = "caseText";
+      // } else if (i == 3) {
+      //   id = "flower";
+      //   idText = "flowerText";
+      // }
+      // let icon = document.getElementById(id);
+      // let text = document.getElementById(idText);
+      // icon.setAttribute("fill", "black");
+      // console.log("text", text);
+      // text.setAttribute("style", "color:black;  text-shadow: 0 0 0");
     },
     removeColor(i) {
-      let id;
-      let idText;
-      if (i == 1) {
-        id = "planet";
-        idText = "planetText";
-      } else if (i == 2) {
-        id = "case";
-        idText = "caseText";
-      } else if (i == 3) {
-        id = "flower";
-        idText = "flowerText";
-      }
-      let icon = document.getElementById(id);
-      let text = document.getElementById(idText);
-      icon.setAttribute("fill", "white");
-      console.log("text", text);
-      text.setAttribute("style", "color:white");
+      // let id;
+      // let idText;
+      // if (i == 1) {
+      //   id = "planet";
+      //   idText = "planetText";
+      // } else if (i == 2) {
+      //   id = "case";
+      //   idText = "caseText";
+      // } else if (i == 3) {
+      //   id = "flower";
+      //   idText = "flowerText";
+      // }
+      // let icon = document.getElementById(id);
+      // let text = document.getElementById(idText);
+      // icon.setAttribute("fill", "white");
+      // console.log("text", text);
+      // text.setAttribute("style", "color:white");
     },
   },
 };
@@ -525,16 +565,15 @@ h1 {
   top: 0;
   width: 0px;
   position: absolute;
-  transition: all 0.3s ease 0s;
-  -webkit-transition: all 0.3s ease 0s;
+  transition: all 0.3s ease 0.1s;
+  -webkit-transition: all 0.3s ease 0.1s;
+  background: black;
   z-index: -1;
 }
 
 .element:hover:after {
   width: 120%;
-}
-.element:after {
-  background: #ffffff;
+  transform: skew(-10deg);
 }
 
 #section1 {
