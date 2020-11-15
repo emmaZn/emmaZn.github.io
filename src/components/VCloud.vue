@@ -1,6 +1,6 @@
 <template>
   <span>
-    <img
+    <!-- <img
       class="cloud"
       id="cloud2"
       src=".././assets/cloud2.png"
@@ -29,7 +29,7 @@
       id="cloud5"
       src=".././assets/cloud5.png"
       alt="little cloud moving"
-    />
+    /> -->
   </span>
 </template>
 
@@ -67,12 +67,12 @@ export default {
 
 <style>
 .cloud {
-  position: relative;
+  position: fixed;
 }
 #cloud1 {
   width: 200px;
-  top: 5%;
-  right: -20%;
+  top: 10px;
+  right: -20px;
 }
 #cloud2 {
   width: 300px;
