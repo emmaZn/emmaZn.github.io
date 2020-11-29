@@ -2,18 +2,21 @@
   <v-app>
     <div id="fullpage">
       <div class="section" id="section1" data-anchor="firstPage">
-        <v-cloud></v-cloud>
-        <v-parallax src="./assets/profil.jpg" height="400">
+        <v-img src="./assets/profil.jpg" height="400" aspect-ratio="1.9" class="mx-auto">
           <v-row justify="center">
             <v-col cols="11" lg="7" align="center">
-              <button class="funbtn" id="phone">
-                <v-icon dark large class="mr-3 pl-2">mdi-phone</v-icon>
-                0658913930
-              </button>
-              <button class="funbtn" id="mail">
+              <a href="tel:+33658913930">
+                <button class="funbtn" id="phone" dark style="color: white">
+                  <v-icon dark large class="mr-3 pl-2">mdi-phone</v-icon>
+                  0658913930
+                </button>
+              </a>
+              <a href="mailto:emmanuelle.zenou.rogala@gmail.com">
+              <button class="funbtn" id="mail" style="color: white">
                 <v-icon large dark class="mr-3 pl-2">mdi-email</v-icon>
                 emmanuelle.zenou.rogala@gmail.com
               </button>
+              </a>
               <button class="funbtn" id="linkedin">
                 <v-icon dark large class="mr-3 pl-2">mdi-linkedin</v-icon>
               </button>
@@ -26,8 +29,10 @@
               <h3 class="mt-5">Etudiante en développement web</h3>
             </v-col>
           </v-row>
-        </v-parallax>
-        <v-btn class="mt-16" href="#secondPage" dark>Découvrez-moi</v-btn>
+        </v-img>
+        <v-btn class="mt-16" href="#secondPage" id="discover" dark
+          >Découvrez-moi</v-btn
+        >
       </div>
       <div class="section" id="section2" data-anchor="secondPage">
         <v-lazy
@@ -93,7 +98,7 @@
                     ludiques de ma discipline : je développe des compétences en
                     design et ergonomie utilisateur sur mon temps libre. De
                     plus, je pratique la peinture acrylique en loisir mais ne
-                    saurait m'y cantonner: la peinture aquarelle et la peinture
+                    saurais m'y cantonner: la peinture aquarelle et la peinture
                     de figurine font aussi parti de mes hobbies.
                   </div>
                 </v-card-text>
@@ -388,6 +393,9 @@ export default {
 };
 </script>
 <style>
+#discover {
+  box-shadow: 20px 20px 60px #081c21, -20px -20px 60px #206e83;
+}
 .trans--grow {
   -webkit-transition: width 1s ease-out; /* For Safari 3.1 to 6.0 */
   transition: width 1s ease-out;
